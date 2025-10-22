@@ -1,0 +1,16 @@
+[Unit]
+Description=fucto Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/app/fucto
+ExecStart=/usr/bin/python3 openai_api_server:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
